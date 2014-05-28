@@ -6,7 +6,9 @@
       (navigator.getUserMedia ||
        navigator.webkitGetUserMedia ||
        navigator.mozGetUserMedia).call(navigator,{video:true, audio:false}, function (stream){
-        document.getElementById("yourMug").src = (window.URL || window.webkitURL).createObjectURL(stream);
+        var video = document.getElementById("yourMug")
+        video.src = (window.URL || window.webkitURL).createObjectURL(stream);
+        video.play();
       }, function (err) {
         console.log("errp", err);
       }); 
