@@ -1,6 +1,20 @@
 <!doctype html>
 <html>
-<body>
-Yup.
-</body>
+  <head>
+    <script type="text/javascript">
+    window.onload = function () {
+      (navigator.getUserMedia ||
+       navigator.webkitGetUserMedia ||
+       navigator.mozGetUserMedia).call(navigator,{video:true, audio:false}, function (stream){
+        document.getElementById("yourMug").src = (window.URL || window.webkitURL).createObjectURL(stream);
+      }, function (err) {
+        console.log("errp", err);
+      }); 
+    };
+    </script>
+  </head>
+  <body>
+    Yup.
+    <video id="yourMug"></video>
+  </body>
 </html>
